@@ -1,0 +1,55 @@
+{
+  "name": "servernodejs",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "build": "rimraf ./dist && npx tsc",
+    "start": "node dist/index.ts",
+    "dev": "nodemon index.ts",
+    "migrate:dev": "npm run build && NODE_ENV=development migrate-mongo up 20231101044252-dbMigrate.ts",
+    "start:dev": "NODE_ENV=development nodemon src/index.ts"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "domain-driven-design"
+  ],
+  "author": "quocanh",
+  "license": "ISC",
+  "dependencies": {
+    "@types/lodash": "^4.14.202",
+    "babel-register": "^6.26.0",
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^1.41.1",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "date-fns": "^3.0.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "mongodb": "^6.3.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.7",
+    "nodemon": "^3.0.1",
+    "path": "^0.12.7",
+    "rimraf": "^5.0.5",
+    "shallow-equal-object": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/compression": "^1.7.4",
+    "@types/cookie-parser": "^1.4.6",
+    "@types/cors": "^2.8.15",
+    "@types/express": "^4.17.20",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/morgan": "^1.9.7",
+    "@types/nodemailer": "^6.4.14",
+    "migrate-mongo": "^11.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "description": ""
+}

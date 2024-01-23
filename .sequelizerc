@@ -1,0 +1,8 @@
+import { resolve } from 'path'
+
+export default {
+  'config':          resolve('dist', 'infra', 'sequelize', 'config', 'config.js'),
+  'migrations-path': resolve('dist', 'infra', 'sequelize', 'migrations'),
+  'models-path': resolve('dist', 'infra', 'sequelize', 'models'),
+  'seeders-path': resolve('dist', 'infra', 'sequelize', 'seeders'),
+}
