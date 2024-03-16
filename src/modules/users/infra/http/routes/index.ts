@@ -38,7 +38,6 @@ import { DeleteBioUserController } from "../../../usecases/DeleteBio/DeleteBioUs
 import { deleteBioUserUsecase } from "../../../usecases/DeleteBio";
 
 const useRouter = express.Router();
-
 useRouter.post("/signup", (req, res) => {
   const userController = new UserController(req, res, createUserUseCase);
   userController.execute(req, res);

@@ -1,6 +1,6 @@
 import { DbClient } from "../../../../scripts/db/dbclient/dbclient";
 import { UserEmail } from "../domain/UserEmail";
-import UserModel from "../../../infrastructure/sequelize/models/User";
+import UserModel from "../../../infrastructure/dbStore/models/User";
 import { ObjectId } from "mongodb";
 
 type EmailInput<T extends string | UserEmail> = T;

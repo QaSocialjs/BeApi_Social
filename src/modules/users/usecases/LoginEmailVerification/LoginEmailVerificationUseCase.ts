@@ -9,7 +9,7 @@ import { LoginEmailVerificationError } from "./LoginEmailVerificationError";
 import { UserEmail } from "../../domain/UserEmail";
 import { UserPassword } from "../../domain/UserPassword";
 import { User } from "../../domain/User";
-import UserModel from "../../../../infrastructure/sequelize/models/User";
+import UserModel from "../../../../infrastructure/dbStore/models/User";
 import { Long, Timestamp } from "mongodb";
 
 type Response = Either<

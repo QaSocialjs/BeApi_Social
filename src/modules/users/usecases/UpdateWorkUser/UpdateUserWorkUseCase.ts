@@ -5,7 +5,7 @@ import { Either, Result, left, right } from "../../../../core/logic/Result";
 import { IUserRepo } from "../../repo/UserRepo";
 import { IWorkRepo } from "../../repo/WorkRepo";
 import { UpdateWorkUserError } from "./UpdateUserWorkError";
-import { Work } from "../../../../infrastructure/sequelize/models/Work";
+import { Work } from "../../../../infrastructure/dbStore/models/Work";
 import _ from "lodash";
 type Response = Either<
   | GenericAppError.UnexpectedError

@@ -7,15 +7,19 @@ import compression from "compression";
 import { isProduction } from "../../config";
 import { v1Route } from "../../webapi/api/v1";
 import { DbClient } from "../../../scripts/db/dbclient/dbclient";
-import dataJson from "../../../scripts/db/dataJson/dataJson.json";
 import { DB_CONN_STRING, DB_NAME } from "../../../scripts/env/enviromentdb";
 import cookieParser from "cookie-parser";
 import { ObjectId } from "mongodb";
 import CloundinaryService from "../service/Cloundinary";
+import { Server, Socket } from "socket.io";
+import { DefaultEventsMap } from "socket.io/dist/typed-events";
+import http from "http";
+import socketIO from "./stocket.io";
 declare global {
   namespace Express {
     interface Request {
       userId?: ObjectId;
+      io?: Server<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>;
     }
   }
 }
@@ -52,9 +56,10 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("combined"));
 app.use(cookieParser());
 
-app.use(v1Route);
-
-app.listen(8080, () => {
+const server = http.createServer(app);
+socketIO(server);
+app.use("/api/v1", v1Route);
+server.listen(8080, () => {
   console.log(`[App]: Server listening on 8080`);
 });
 

@@ -1,7 +1,14 @@
 import { Db, MongoClient, ObjectId, type MongoClientOptions } from "mongodb";
-import UserModel from "../../../src/infrastructure/sequelize/models/User";
+import UserModel from "../../../src/infrastructure/dbStore/models/User";
 import { isThursday } from "date-fns";
-import { Work } from "../../../src/infrastructure/sequelize/models/Work";
+import { Work } from "../../../src/infrastructure/dbStore/models/Work";
+import { FriendShipReq } from "../../../src/infrastructure/dbStore/models/Friend";
+import {
+  NotificationObject,
+  RecordNotificationReceiver,
+  RecordNotificationSender,
+} from "../../../src/infrastructure/dbStore/models/Notification";
+import { RecommendationFriend } from "../../../src/infrastructure/dbStore/models/Recommendation";
 
 interface DbClientOptions {
   url: string;
@@ -61,5 +68,24 @@ class Collection {
   }
   public get work() {
     return this.db.collection<Work>("work");
+  }
+  public get friendShipReq() {
+    return this.db.collection<FriendShipReq>("friendshipreq");
+  }
+  public get notificationObject() {
+    return this.db.collection<NotificationObject>("notificationObject");
+  }
+  public get notificationSender() {
+    return this.db.collection<RecordNotificationSender>(
+      "recordNotificationSender"
+    );
+  }
+  public get notificationReceiver() {
+    return this.db.collection<RecordNotificationReceiver>(
+      "recordNotificationReceiver"
+    );
+  }
+  public get Recommendation() {
+    return this.db.collection<RecommendationFriend>("recommendationFriend");
   }
 }

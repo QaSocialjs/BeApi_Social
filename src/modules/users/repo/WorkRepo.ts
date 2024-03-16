@@ -1,5 +1,5 @@
 import { DbClient } from "../../../../scripts/db/dbclient/dbclient";
-import { Work } from "../../../infrastructure/sequelize/models/Work";
+import { Work } from "../../../infrastructure/dbStore/models/Work";
 import { Document } from "mongodb";
 export interface IWorkRepo {
   findWorkByCompany(company: string): Promise<Work[] | null>;

@@ -26,4 +26,5 @@ export default interface UserModel extends Document {
   startWork?: Date;
   endWork?: Date;
   bio?: string;
+  phone?: number;
 }

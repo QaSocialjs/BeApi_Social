@@ -42,9 +42,11 @@ export function verifyTokenCookie(
 }
 
 export function verifyAuthentication(req: Request, res: Response) {
-  if (!req.cookies["accesstoken"]) {
-    ResponseApi.getResponse(res).ok(res);
-  } else {
-    ResponseApi.getResponse(res).unauthorized("You are logged in!!!");
-  }
+  console.log("req");
+  console.log(req.headers);
+  // if (!req.cookies["accesstoken"]) {
+  //   ResponseApi.getResponse(res).ok(res);
+  // } else {
+  //   ResponseApi.getResponse(res).unauthorized("You are logged in!!!");
+  // }
 }

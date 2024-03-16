@@ -5,7 +5,7 @@ import { IUserRepo } from "../../repo/UserRepo";
 import { UserDto } from "../dto/UserDto";
 import UserModel, {
   City,
-} from "../../../../infrastructure/sequelize/models/User";
+} from "../../../../infrastructure/dbStore/models/User";
 import { GenericAppError } from "../../../../core/logic/AppError";
 import { DeleteBioUserError } from "./DeleteBioUserError";
 type Response = Either<

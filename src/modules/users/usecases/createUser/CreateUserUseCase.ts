@@ -1,8 +1,8 @@
 import { UseCase } from "../../../../core/domain/UseCase";
 import { GenericAppError } from "../../../../core/logic/AppError";
 import { Either, Result, left, right } from "../../../../core/logic/Result";
-import { UserRole } from "../../../../infrastructure/sequelize/models/Role";
-import UserModel from "../../../../infrastructure/sequelize/models/User";
+import { UserRole } from "../../../../infrastructure/dbStore/models/Role";
+import UserModel from "../../../../infrastructure/dbStore/models/User";
 import SendMailService, {
   optionTransport,
 } from "../../../../infrastructure/service/SendMailService";

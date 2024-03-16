@@ -2,7 +2,7 @@ import { UseCase } from "../../../../core/domain/UseCase";
 import { Either, Result, left, right } from "../../../../core/logic/Result";
 import { IUserRepo, UserRepo } from "../../repo/UserRepo";
 import { UserDto } from "../dto/UserDto";
-import UserModel from "../../../../infrastructure/sequelize/models/User";
+import UserModel from "../../../../infrastructure/dbStore/models/User";
 
 type Response = Either<Result<any>, Result<void>>;
 

@@ -1,8 +1,8 @@
 import { ObjectId } from "mongodb";
-import { UserRole } from "../../../../infrastructure/sequelize/models/Role";
+import { UserRole } from "../../../../infrastructure/dbStore/models/Role";
 import { AssetInfo } from "../../../../infrastructure/models/AssetService";
-import { City } from "../../../../infrastructure/sequelize/models/User";
-import { Work } from "../../../../infrastructure/sequelize/models/Work";
+import { City } from "../../../../infrastructure/dbStore/models/User";
+import { Work } from "../../../../infrastructure/dbStore/models/Work";
 
 export interface UserDto {
   id: ObjectId;
@@ -23,4 +23,5 @@ export interface UserDto {
   startWork?: Date;
   endWork?: Date;
   bio?: string;
+  phone?: number;
 }
