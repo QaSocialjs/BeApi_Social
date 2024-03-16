@@ -7,6 +7,7 @@ import { notificationRepo } from "../../modules/notifications/repo/index";
 import { Socket } from "socket.io";
 import UserModel from "../dbStore/models/User";
 import { UserDto } from "../../modules/users/usecases/dto/UserDto";
+import { userRepo } from "../../modules/users/repo";
 
 function convert(dto: UserModel) {
   return {
@@ -62,6 +63,36 @@ export async function HandleGetAllSndReqWithSpecificUser(
     console.log(userDto);
     for (const user of users[idFr]) {
       socket.to(user.socketID).emit("re-renderFriendReq", { users: userDto });
+    }
+  } catch (e) {
+    socket.emit("Some thing is wrong");
+  }
+}
+
+export async function HandleSendNotification(
+  idCur: string,
+  users: Record<string, { socketID: string }[]>,
+  idFr: string,
+  socket: Socket
+) {
+  try {
+    const finduser = await userRepo.findUserById(new ObjectId(idCur));
+    console.log(idCur);
+    console.log(finduser);
+    if (!finduser) {
+      socket.emit("Some thing is wrong");
+    }
+    const u = {
+      ...finduser,
+      id: finduser!._id,
+      password: "",
+    };
+    console.log(u);
+    for (const user of users[idFr]) {
+      socket.to(user.socketID).emit("NotificationAlert", {
+        u: u,
+        type: EntityType.FRIEND_SEND_REQ,
+      });
     }
   } catch (e) {
     socket.emit("Some thing is wrong");

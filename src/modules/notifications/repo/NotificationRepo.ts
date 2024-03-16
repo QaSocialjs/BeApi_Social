@@ -5,6 +5,7 @@ import {
   RecordNotificationReceiver,
   RecordNotificationSender,
 } from "../../../infrastructure/dbStore/models/Notification";
+import { User } from "../../users/domain/User";
 
 export interface INotificationRepo {
   saveNotificationObject(object: NotificationObject): Promise<void>;
@@ -17,6 +18,7 @@ export interface INotificationRepo {
   findNotificationIdReceiver(
     id: ObjectId
   ): Promise<RecordNotificationReceiver[] | null>;
+  // findNotificationUserSendReq(id: ObjectId): Promise<User>;
 }
 
 export class NotificationRepo implements INotificationRepo {
@@ -54,4 +56,10 @@ export class NotificationRepo implements INotificationRepo {
       .toArray();
     return list;
   }
+
+  // public async findNotificationUserSendReq(id: ObjectId): Promise<User> {
+
+  //   const id = await DbClient.instance.collections.
+  //   return null;
+  // }
 }

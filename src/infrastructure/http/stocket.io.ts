@@ -5,6 +5,7 @@ import { verifyAuthentication } from "./middleware";
 import { NextFunction, Request, Response } from "express";
 import {
   HandleGetAllSndReqWithSpecificUser,
+  HandleSendNotification,
   HandleSendReq,
 } from "../service/SockService";
 
@@ -42,6 +43,7 @@ const socketIO = (server: http.Server) => {
       try {
         await HandleSendReq(id, idFr, socket);
         await HandleGetAllSndReqWithSpecificUser(idFr, users, socket);
+        await HandleSendNotification(id, users, idFr, socket);
       } catch (error) {
         console.error("Error making friend:", error);
         socket.emit("Some thing is wrong");
